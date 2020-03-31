@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  social-veterinary-api:
+    build:
+      context: ../src/social-veterinary-backend
+      dockerfile: ./Dockerfile
+    environment:
+      - ENV_ConnectionStrings__Database=server=social-veterinary-db;uid=user;pwd=admin123!;database=db
+    ports:
+      - '8080:80'
+    expose:
+      - '8080'
+    depends_on:
+      - social-veterinary-db
+      - social-veterinary-db-migrations
+
+  social-veterinary-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'admin123!'
+      MYSQL_ROOT_PASSWORD: 'admin123!'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - data2:/var/lib/mysql
+
+  social-veterinary-db-migrations:
+    build:
+      context: ../src/social-veterinary-backend
+      dockerfile: ./Dockerfile-migrations
+    environment:
+      - CONNECTION_STRING=server=social-veterinary-db;uid=user;pwd=admin123!;database=db
+      - WAIT=1
+    depends_on:
+      - social-veterinary-db
+
+volumes:
+  data2: {}

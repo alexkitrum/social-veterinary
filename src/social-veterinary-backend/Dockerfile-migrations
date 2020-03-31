@@ -1,0 +1,24 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build-migrations
+COPY . .
+
+RUN find *.Migrations/ -type f -name "*.Migrations.csproj" -exec dotnet build {} -c Release \;
+RUN mkdir /migrations
+RUN find *.Migrations/ -type f -name "*.Migrations.dll" -exec cp {} migrations/ \;
+
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch
+ENV PATH="$PATH:/root/.dotnet/tools"
+ENV CONNECTION_STRING=""
+ENV DB_HOST=localhost
+ENV DB_HOST_PORT=3306
+RUN dotnet tool install -g FluentMigrator.DotNet.Cli
+
+WORKDIR /
+COPY --from=build-migrations /migrations /migrations
+COPY --from=build-migrations /run_migrations.sh .
+COPY --from=build-migrations /wait-for-it.sh .
+
+RUN chmod +x run_migrations.sh
+RUN chmod +x wait-for-it.sh
+ENV host="$DB_HOST:$DB_HOST_PORT"
+RUN echo $host
+ENTRYPOINT bash wait-for-it.sh $host -t 10 -- bash run_migrations.sh
