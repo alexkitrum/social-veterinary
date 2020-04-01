@@ -48,7 +48,7 @@
             return entity;
         }
 
-        public async Task<IEnumerable<Person>> Get()
+        public async Task<IEnumerable<Person>> GetAsync()
         {
             await using var connection = GetOpenConnection();
             return await connection.QueryAsync<Person>(@"SELECT p.*, COUNT(pt.id) as PetsCount FROM persons p

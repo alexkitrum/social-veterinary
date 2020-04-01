@@ -5,6 +5,6 @@
 
     public interface IPersonRepository : ICrudRepository<Person>
     {
-        Task<IEnumerable<Person>> Get();
+        Task<IEnumerable<Person>> GetAsync();
     }
 }

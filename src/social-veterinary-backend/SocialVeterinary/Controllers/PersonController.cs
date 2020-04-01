@@ -29,7 +29,7 @@
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            var persons = await _personRepository.Get();
+            var persons = await _personRepository.GetAsync();
             return Ok(_mapper.Map<IEnumerable<PersonViewModel>>(persons));
         }
 
