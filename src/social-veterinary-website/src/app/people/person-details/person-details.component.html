@@ -1,0 +1,46 @@
+<div>
+  <div class="row">
+    <div class="col-sm-3">
+
+      <div class="details-container" *ngIf="viewMode">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="https://www.blpainters.co.nz/wp-content/uploads/2017/07/default-person-300x300.png" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            First Name:
+          </div>
+          <div class="col-md-1">
+            {{data?.name}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            Last Name:
+          </div>
+          <div class="col-md-1">
+            {{data?.lastName}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            Is Employee
+          </div>
+          <div class="col-md-1">
+            {{data?.isEmployee ? 'Yes' : 'No'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm pets-list">
+      <pets-list></pets-list>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="controls">
+    <button type="button" (click)="backToList()" class="btn btn-secondary">Back to list</button>
+  </div>
+</div>

@@ -51,7 +51,9 @@
         public async Task<IEnumerable<Person>> Get()
         {
             await using var connection = GetOpenConnection();
-            return await connection.QueryAsync<Person>("SELECT * FROM persons");
+            return await connection.QueryAsync<Person>(@"SELECT p.*, COUNT(pt.id) as PetsCount FROM persons p
+                                    LEFT JOIN pets pt ON pt.person_id = p.id 
+                                    GROUP BY p.id");
         }
     }
 }

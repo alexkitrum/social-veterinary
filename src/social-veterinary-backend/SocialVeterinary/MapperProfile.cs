@@ -10,11 +10,11 @@ namespace SocialVeterinary.Api
     {
         public MapperProfile()
         {
-            this.CreateMap<Pet, PetViewModel>();
-            this.CreateMap<CreatePetViewModel, Pet>();
+            CreateMap<Pet, PetViewModel>();
+            CreateMap<CreatePetViewModel, Pet>();
 
-            this.CreateMap<Person, PersonViewModel>();
-            this.CreateMap<CreatePersonViewModel, Person>();
+            CreateMap<Person, PersonViewModel>();
+            CreateMap<CreatePersonViewModel, Person>();
 
         }
     }

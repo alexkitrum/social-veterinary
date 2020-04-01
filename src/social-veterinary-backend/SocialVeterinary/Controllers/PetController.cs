@@ -23,27 +23,27 @@ namespace SocialVeterinary.Api.Controllers
 
         public PersonPetsController(IMapper mapper, IPetRepository petRepository)
         {
-            this._mapper = mapper;
-            this._petRepository = petRepository;
+            _mapper = mapper;
+            _petRepository = petRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult> Get([FromRoute] long id)
         {
-            var pets = await this._petRepository.GetPetsForOwnerAsync(id);
-            return this.Ok(this._mapper.Map<IEnumerable<PetViewModel>>(pets));
+            var pets = await _petRepository.GetPetsForOwnerAsync(id);
+            return Ok(_mapper.Map<IEnumerable<PetViewModel>>(pets));
         }
 
         [HttpPut]
         public async Task<ActionResult> Create([FromRoute] long id, [FromBody] CreatePetViewModel request)
         {
-            var domainPet = this._mapper.Map<Pet>(request);
+            var domainPet = _mapper.Map<Pet>(request);
             domainPet.OwnerId = id;
 
             // TODO: Add validation here.
 
-            var createdPet = await this._petRepository.AddAsync(domainPet);
-            return this.Ok(this._mapper.Map<PetViewModel>(createdPet));
+            var createdPet = await _petRepository.AddAsync(domainPet);
+            return Ok(_mapper.Map<PetViewModel>(createdPet));
         }
     }
 }

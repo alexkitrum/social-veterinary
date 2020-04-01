@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string LastName { get; set; }
         public bool IsEmployee { get; set; }
+        public int PetsCount { get; set; }
     }
 }
