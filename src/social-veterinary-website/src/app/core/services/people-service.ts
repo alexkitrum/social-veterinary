@@ -5,21 +5,21 @@ import {Observable, of} from 'rxjs';
 import {IPerson} from 'src/app/shared/interfaces/person.model';
 import {catchError, tap} from 'rxjs/operators';
 import {ToastrService} from './toastr.service';
+import {HttpClientHelper} from './client-helper';
 
 @Injectable()
 export class PeopleService {
   people: IPerson[] = [];
-
   constructor(private http: HttpClient, private toastr: ToastrService) {
 
   }
 
   getById(id: number): Observable<IPerson> {
-    return this.http.get<IPerson>(`/api/persons/${id}`);
+    return this.http.get<IPerson>(`${HttpClientHelper.baseURL}/api/persons/${id}`);
   }
 
   add(person): Observable<IPerson> {
-    return this.http.put<IPerson>('/api/persons', person, {
+    return this.http.put<IPerson>(`${HttpClientHelper.baseURL}/api/persons`, person, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -31,7 +31,7 @@ export class PeopleService {
   }
 
   getAll(): Observable<IPerson[]> {
-    return this.http.get<IPerson[]>('/api/persons')
+    return this.http.get<IPerson[]>(`${HttpClientHelper.baseURL}/api/persons`)
       .pipe(catchError(this.handlerError<IPerson[]>('getAll', [])));
   }
 

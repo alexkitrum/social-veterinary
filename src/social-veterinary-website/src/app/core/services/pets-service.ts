@@ -5,6 +5,7 @@ import {Observable, of} from 'rxjs';
 import {IPet} from 'src/app/shared/interfaces/pet.model';
 import {catchError, tap} from 'rxjs/operators';
 import {ToastrService} from './toastr.service';
+import {HttpClientHelper} from './client-helper';
 
 @Injectable()
 export class PetsService {
@@ -14,7 +15,7 @@ export class PetsService {
   }
 
   add(personId, pet): Observable<IPet> {
-    return this.http.put<IPet>(`/api/persons/${personId}/pets`, pet, {
+    return this.http.put<IPet>(`${HttpClientHelper.baseURL}/api/persons/${personId}/pets`, pet, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -26,7 +27,7 @@ export class PetsService {
   }
 
   getPetsForPerson(personId): Observable<IPet[]> {
-    return this.http.get<IPet[]>(`/api/persons/${personId}/pets`)
+    return this.http.get<IPet[]>(`${HttpClientHelper.baseURL}/api/persons/${personId}/pets`)
       .pipe(catchError(this.handlerError<IPet[]>('getPetsForPerson', [])));
   }
 

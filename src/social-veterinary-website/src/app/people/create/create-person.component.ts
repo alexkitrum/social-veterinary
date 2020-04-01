@@ -43,6 +43,6 @@ export class CreatePersonComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/people']);
   }
 }

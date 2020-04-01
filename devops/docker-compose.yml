@@ -1,6 +1,17 @@
 version: '3.4'
 
 services:
+  social-veterinary-web:
+    build:
+      context: ../src/social-veterinary-website
+      dockerfile: ./Dockerfile
+    ports:
+      - '4200:80'
+    expose:
+      - '4200'
+    depends_on:
+      - social-veterinary-api
+
   social-veterinary-api:
     build:
       context: ../src/social-veterinary-backend
@@ -8,9 +19,9 @@ services:
     environment:
       - ENV_ConnectionStrings__Database=server=social-veterinary-db;uid=user;pwd=admin123!;database=db
     ports:
-      - '8080:80'
+      - '8089:80'
     expose:
-      - '8080'
+      - '8089'
     depends_on:
       - social-veterinary-db
       - social-veterinary-db-migrations

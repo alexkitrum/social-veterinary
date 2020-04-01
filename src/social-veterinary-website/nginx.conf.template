@@ -1,0 +1,13 @@
+server {
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location /configs/config.json {
+        try_files /configs/config.${ENVIRONMENT}.json /configs/config.json =404;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
