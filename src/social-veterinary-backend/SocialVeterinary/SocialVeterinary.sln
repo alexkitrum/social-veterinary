@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8B7698C9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialVeterinary.Data.IntegrationTests", "..\tests\SocialVeterinary.Data.IntegrationTests\SocialVeterinary.Data.IntegrationTests.csproj", "{9FAB2DE3-41C4-4DEB-B599-C5999074417C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialVeterinary.Api.Unittests", "..\tests\SocialVeterinary.Api.Unittests\SocialVeterinary.Api.Unittests.csproj", "{F07C0462-B38D-4F49-A4F2-42A29662A883}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +43,17 @@ Global
 		{9FAB2DE3-41C4-4DEB-B599-C5999074417C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FAB2DE3-41C4-4DEB-B599-C5999074417C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FAB2DE3-41C4-4DEB-B599-C5999074417C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F07C0462-B38D-4F49-A4F2-42A29662A883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07C0462-B38D-4F49-A4F2-42A29662A883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07C0462-B38D-4F49-A4F2-42A29662A883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07C0462-B38D-4F49-A4F2-42A29662A883}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9FAB2DE3-41C4-4DEB-B599-C5999074417C} = {8B7698C9-A445-48AB-86E0-45223786B9EA}
+		{F07C0462-B38D-4F49-A4F2-42A29662A883} = {8B7698C9-A445-48AB-86E0-45223786B9EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1301CAFA-5F27-4EBC-9E20-37DA7D1589DF}

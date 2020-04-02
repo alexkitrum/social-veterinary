@@ -52,7 +52,11 @@ namespace SocialVeterinary.Api.Infrastructure
                                     NullValueHandling = NullValueHandling.Ignore,
                                     ContractResolver = new CamelCasePropertyNamesContractResolver()
                                 }));
+                    return;
                 }
+
+                throw;
+
             }
         }
 
