@@ -1,4 +1,8 @@
-﻿namespace SocialVeterinary.Api.Controllers
+﻿using FluentValidation;
+
+using SocialVeterinary.Api.Validators;
+
+namespace SocialVeterinary.Api.Controllers
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -46,7 +50,8 @@
         {
             var domainPerson = _mapper.Map<Person>(request);
 
-            // TODO: Add validation here.
+            var validator = new CreatePersonViewModelValidator();
+            await validator.ValidateAndThrowAsync(request);
 
             var createdPerson = await _personRepository.AddAsync(domainPerson);
             return Ok(_mapper.Map<PersonViewModel>(createdPerson));

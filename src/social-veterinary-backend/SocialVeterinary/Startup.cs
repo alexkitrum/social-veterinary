@@ -1,3 +1,5 @@
+using SocialVeterinary.Api.Infrastructure;
+
 namespace SocialVeterinary.Api
 {
     using System.Reflection;
@@ -83,6 +85,8 @@ namespace SocialVeterinary.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
