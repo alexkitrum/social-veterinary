@@ -51,7 +51,7 @@ Api and website projects have their own Dockerfile files that can be used to cre
 # Documentation
 
 ## User Features
-According an initiat requirements, the application provides functionality where surgeons can manage their customers and pets.
+According to initiat requirements, the application provides functionality where surgeons can manage their customers and pets.
 
 ### View list of people
 Page where user can see a list of all customers with information about their pets.
@@ -76,7 +76,9 @@ For local environment, you can access it by the following link: http://localhost
 Prerequisites:
 + Docker
 
-To run application locally, all you need is to run docker-compose file. It will build images for the following parts:
+To run application locally, all you need is to run docker-compose file.
+
+It will build images for the following parts:
 - **Frontend** (build all assets and run nginx to serve them)
 - **Backend** (build api image and run it in docker container)
 - **Database** (run mysql instance using image from Docker Hub)
